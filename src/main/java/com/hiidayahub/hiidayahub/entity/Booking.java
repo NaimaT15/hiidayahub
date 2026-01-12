@@ -11,6 +11,14 @@ public class Booking {
 
     private String status; // PENDING, APPROVED, CANCELLED
 
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private User student;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
+
     public Booking() {
     }
 
@@ -21,5 +29,21 @@ public class Booking {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public User getStudent() {
+        return student;
+    }
+
+    public void setStudent(User student) {
+        this.student = student;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }

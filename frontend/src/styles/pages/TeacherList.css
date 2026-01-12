@@ -1,0 +1,63 @@
+.teacher-list-page {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    font-size: 2.5rem;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 0.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow var(--transition-fast);
+}
+
+.search-bar:focus-within {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.search-icon {
+    margin-left: 1rem;
+    color: var(--text-muted);
+}
+
+.search-bar input {
+    flex-grow: 1;
+    border: none;
+    padding: 0.75rem 1rem;
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-bar button {
+    border-radius: var(--radius-lg);
+    padding: 0.5rem 1.5rem;
+}
+
+.teachers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem;
+    color: var(--text-muted);
+}

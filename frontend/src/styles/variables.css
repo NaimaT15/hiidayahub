@@ -1,0 +1,35 @@
+:root {
+  /* Colors */
+  --primary-color: #059669; /* Emerald 600 */
+  --primary-hover: #047857; /* Emerald 700 */
+  --primary-light: #D1FAE5; /* Emerald 100 */
+  --secondary-color: #0F172A; /* Slate 900 */
+  --accent-color: #F59E0B; /* Amber 500 */
+  
+  --bg-color: #F8FAFC; /* Slate 50 */
+  --card-bg: #FFFFFF;
+  --text-main: #1E293B; /* Slate 800 */
+  --text-muted: #64748B; /* Slate 500 */
+  --border-color: #E2E8F0; /* Slate 200 */
+  --input-bg: #FFFFFF;
+  
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', sans-serif; /* If we add it later */
+  
+  /* Spacing & Radii */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
