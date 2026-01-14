@@ -13,6 +13,11 @@ export const register = async (userData) => {
     return response.data;
 };
 
+export const registerTeacher = async (teacherData) => {
+    const response = await api.post('/auth/register-teacher', teacherData);
+    return response.data;
+};
+
 export const logout = () => {
     localStorage.removeItem('token');
     window.location.href = '/login';

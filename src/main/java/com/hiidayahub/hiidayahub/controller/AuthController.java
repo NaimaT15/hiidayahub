@@ -18,11 +18,14 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
     private final UserService userService;
+    private final com.hiidayahub.hiidayahub.repository.TeacherRepository teacherRepository;
 
-    public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil, UserService userService) {
+    public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil, UserService userService,
+            com.hiidayahub.hiidayahub.repository.TeacherRepository teacherRepository) {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
         this.userService = userService;
+        this.teacherRepository = teacherRepository;
     }
 
     @PostMapping("/register")
@@ -32,11 +35,35 @@ public class AuthController {
         return ResponseEntity.ok(saved);
     }
 
+    @PostMapping("/register-teacher")
+    public ResponseEntity<?> registerTeacher(
+            @RequestBody com.hiidayahub.hiidayahub.dto.TeacherRegistrationRequest req) {
+        // 1. Create User
+        User user = new User();
+        user.setEmail(req.getEmail());
+        user.setPassword(req.getPassword());
+        user.setRole("TEACHER");
+        User savedUser = userService.register(user);
+
+        // 2. Create Teacher linked to User
+        com.hiidayahub.hiidayahub.entity.Teacher teacher = com.hiidayahub.hiidayahub.entity.Teacher.builder()
+                .user(savedUser)
+                .bio(req.getBio())
+                .country(req.getCountry())
+                .language(req.getLanguage())
+                .experience(req.getExperience())
+                .hourlyRate(req.getHourlyRate())
+                .build();
+
+        teacherRepository.save(teacher);
+
+        return ResponseEntity.ok(savedUser);
+    }
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest req) {
         Authentication auth = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword())
-        );
+                new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword()));
         String token = jwtUtil.generateToken(req.getEmail());
         return ResponseEntity.ok(new AuthResponse(token));
     }

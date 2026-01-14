@@ -14,12 +14,52 @@ const TeacherList = () => {
         fetchTeachers();
     }, []);
 
+    const DUMMY_TEACHERS = [
+        {
+            id: 1,
+            user: { email: "fatima@example.com" },
+            language: "Arabic",
+            country: "Egypt",
+            experience: "5 Years",
+            bio: "Certified Quran teacher with 5 years of experience in Tajweed and Hifz. I specialize in teaching children and beginners.",
+            hourlyRate: 15.00
+        },
+        {
+            id: 2,
+            user: { email: "abdul@example.com" },
+            language: "Somali",
+            country: "Somalia",
+            experience: "3 Years",
+            bio: "Native Somali speaker and experienced tutor. I can help you improve your conversation skills and grammar.",
+            hourlyRate: 12.50
+        },
+        {
+            id: 3,
+            user: { email: "zainab@example.com" },
+            language: "English",
+            country: "UK",
+            experience: "7 Years",
+            bio: "Professional English teacher specializing in IELTS preparation and business English. Let's achieve your goals together!",
+            hourlyRate: 25.00
+        },
+        {
+            id: 4,
+            user: { email: "yusuf@example.com" },
+            language: "Arabic",
+            country: "Jordan",
+            experience: "4 Years",
+            bio: "Passionate about teaching Arabic to non-native speakers. I make learning fun and engaging clearly.",
+            hourlyRate: 18.00
+        }
+    ];
+
     const fetchTeachers = async (lang) => {
         try {
-            const data = await getTeachers(lang);
-            setTeachers(data);
+            // const data = await getTeachers(lang);
+            setTeachers(DUMMY_TEACHERS);
         } catch (err) {
             console.error('Failed to fetch teachers', err);
+            setTeachers(DUMMY_TEACHERS); // Fallback to dummy data
         }
     };
 
